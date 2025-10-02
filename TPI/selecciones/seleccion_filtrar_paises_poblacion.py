@@ -10,8 +10,11 @@ def seleccion_filtrar_paises_poblacion(seleccion):
                     for i in range(0,len(paises_info)):
                         if paises_info[i].get("poblacion") < 1000000:
                             print(f"{paises_info[i].get("nombre")}: tiene {paises_info[i].get("poblacion")} habitantes.")
-                    pass
                 case 2:
-                    pass
+                    for i in range(0,len(paises_info)):
+                        if 1000000 < paises_info[i].get("poblacion") < 10000000:
+                            print(f"{paises_info[i].get("nombre")}: tiene {paises_info[i].get("poblacion")} habitantes.")
                 case 3:
-                    pass
+                    for i in range(0,len(paises_info)):
+                        if 10000000 < paises_info[i].get("poblacion"):
+                            print(f"{paises_info[i].get("nombre")}: tiene {paises_info[i].get("poblacion")} habitantes.")
