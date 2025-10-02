@@ -1,227 +1,47 @@
-from funciones.funcion_buscar_pais import *
+from paises_info import * #Se importa la lista completa de los países, más su información (continente, habitantes,etc)
+from funciones.funcion_buscar_pais import * #Se importa de la carpeta "funciones" la funcion para la opción 1)
+from funciones.funcion_filtrar_paises import *
+
 menu=True
-paises_info = [
-    {"nombre": "Afganistán", "poblacion": 41128771, "superficie": 652230, "continente": "Asia"},
-    {"nombre": "Albania", "poblacion": 2877797, "superficie": 28748, "continente": "Europa"},
-    {"nombre": "Alemania", "poblacion": 83240525, "superficie": 357022, "continente": "Europa"},
-    {"nombre": "Andorra", "poblacion": 79824, "superficie": 468, "continente": "Europa"},
-    {"nombre": "Angola", "poblacion": 35670161, "superficie": 1246700, "continente": "África"},
-    {"nombre": "Antigua y Barbuda", "poblacion": 94010, "superficie": 442, "continente": "América"},
-    {"nombre": "Arabia Saudita", "poblacion": 37000000, "superficie": 2149690, "continente": "Asia"},
-    {"nombre": "Argelia", "poblacion": 45350174, "superficie": 2381741, "continente": "África"},
-    {"nombre": "Argentina", "poblacion": 46250000, "superficie": 2780400, "continente": "América"},
-    {"nombre": "Armenia", "poblacion": 2790974, "superficie": 29743, "continente": "Asia"},
-    {"nombre": "Australia", "poblacion": 26844838, "superficie": 7692024, "continente": "Oceanía"},
-    {"nombre": "Austria", "poblacion": 9006400, "superficie": 83879, "continente": "Europa"},
-    {"nombre": "Azerbaiyán", "poblacion": 10300500, "superficie": 86600, "continente": "Asia"},
-    {"nombre": "Bahamas", "poblacion": 407906, "superficie": 13943, "continente": "América"},
-    {"nombre": "Bangladés", "poblacion": 169356251, "superficie": 147570, "continente": "Asia"},
-    {"nombre": "Barbados", "poblacion": 281635, "superficie": 430, "continente": "América"},
-    {"nombre": "Baréin", "poblacion": 1485509, "superficie": 765, "continente": "Asia"},
-    {"nombre": "Bélgica", "poblacion": 11589623, "superficie": 30528, "continente": "Europa"},
-    {"nombre": "Belice", "poblacion": 405272, "superficie": 22966, "continente": "América"},
-    {"nombre": "Benín", "poblacion": 13638860, "superficie": 112622, "continente": "África"},
-    {"nombre": "Bielorrusia", "poblacion": 9485386, "superficie": 207600, "continente": "Europa"},
-    {"nombre": "Birmania", "poblacion": 54817939, "superficie": 676578, "continente": "Asia"},
-    {"nombre": "Bolivia", "poblacion": 12482725, "superficie": 1098581, "continente": "América"},
-    {"nombre": "Bosnia y Herzegovina", "poblacion": 3280819, "superficie": 51197, "continente": "Europa"},
-    {"nombre": "Botsuana", "poblacion": 2630296, "superficie": 581730, "continente": "África"},
-    {"nombre": "Brasil", "poblacion": 215313498, "superficie": 8515767, "continente": "América"},
-    {"nombre": "Brunéi", "poblacion": 452524, "superficie": 5765, "continente": "Asia"},
-    {"nombre": "Bulgaria", "poblacion": 6811617, "superficie": 110879, "continente": "Europa"},
-    {"nombre": "Burkina Faso", "poblacion": 23632259, "superficie": 272967, "continente": "África"},
-    {"nombre": "Burundi", "poblacion": 13911715, "superficie": 27834, "continente": "África"},
-    {"nombre": "Bután", "poblacion": 782455, "superficie": 38394, "continente": "Asia"},
-    {"nombre": "Cabo Verde", "poblacion": 593149, "superficie": 4033, "continente": "África"},
-    {"nombre": "Camboya", "poblacion": 16718971, "superficie": 181035, "continente": "Asia"},
-    {"nombre": "Camerún", "poblacion": 28873239, "superficie": 475442, "continente": "África"},
-    {"nombre": "Canadá", "poblacion": 38929902, "superficie": 9984670, "continente": "América"},
-    {"nombre": "Catar", "poblacion": 2930525, "superficie": 11586, "continente": "Asia"},
-    {"nombre": "Chad", "poblacion": 18278535, "superficie": 1284000, "continente": "África"},
-    {"nombre": "Chile", "poblacion": 19603733, "superficie": 756102, "continente": "América"},
-    {"nombre": "China", "poblacion": 1411778724, "superficie": 9596961, "continente": "Asia"},
-    {"nombre": "Chipre", "poblacion": 1260138, "superficie": 9251, "continente": "Europa"},
-    {"nombre": "Colombia", "poblacion": 51874024, "superficie": 1141748, "continente": "América"},
-    {"nombre": "Comoras", "poblacion": 907419, "superficie": 2235, "continente": "África"},
-    {"nombre": "Corea del Norte", "poblacion": 26160821, "superficie": 120538, "continente": "Asia"},
-    {"nombre": "Corea del Sur", "poblacion": 51784000, "superficie": 100210, "continente": "Asia"},
-    {"nombre": "Costa de Marfil", "poblacion": 28873000, "superficie": 322463, "continente": "África"},
-    {"nombre": "Costa Rica", "poblacion": 5180829, "superficie": 51100, "continente": "América"},
-    {"nombre": "Croacia", "poblacion": 3845452, "superficie": 56594, "continente": "Europa"},
-    {"nombre": "Cuba", "poblacion": 11249266, "superficie": 109884, "continente": "América"},
-    {"nombre": "Dinamarca", "poblacion": 5910916, "superficie": 43094, "continente": "Europa"},
-    {"nombre": "Dominica", "poblacion": 72812, "superficie": 751, "continente": "América"},
-    {"nombre": "Ecuador", "poblacion": 17643060, "superficie": 256370, "continente": "América"},
-    {"nombre": "Egipto", "poblacion": 109529000, "superficie": 1002450, "continente": "África"},
-    {"nombre": "El Salvador", "poblacion": 6499486, "superficie": 21041, "continente": "América"},
-    {"nombre": "Emiratos Árabes Unidos", "poblacion": 9516872, "superficie": 83600, "continente": "Asia"},
-    {"nombre": "Eritrea", "poblacion": 3718967, "superficie": 117600, "continente": "África"},
-    {"nombre": "Eslovaquia", "poblacion": 5456362, "superficie": 49035, "continente": "Europa"},
-    {"nombre": "Eslovenia", "poblacion": 2119841, "superficie": 20273, "continente": "Europa"},
-    {"nombre": "España", "poblacion": 48558584, "superficie": 505990, "continente": "Europa"},
-    {"nombre": "Estados Unidos", "poblacion": 339996563, "superficie": 9833517, "continente": "América"},
-    {"nombre": "Estonia", "poblacion": 1326535, "superficie": 45227, "continente": "Europa"},
-    {"nombre": "Esuatini", "poblacion": 1201193, "superficie": 17364, "continente": "África"},
-    {"nombre": "Etiopía", "poblacion": 126527060, "superficie": 1104300, "continente": "África"},
-    {"nombre": "Filipinas", "poblacion": 117337368, "superficie": 300000, "continente": "Asia"},
-    {"nombre": "Finlandia", "poblacion": 5540720, "superficie": 338424, "continente": "Europa"},
-    {"nombre": "Fiyi", "poblacion": 936375, "superficie": 18274, "continente": "Oceanía"},
-    {"nombre": "Francia", "poblacion": 65327689, "superficie": 551695, "continente": "Europa"},
-    {"nombre": "Gabón", "poblacion": 2388992, "superficie": 267668, "continente": "África"},
-    {"nombre": "Gambia", "poblacion": 2639916, "superficie": 11295, "continente": "África"},
-    {"nombre": "Georgia", "poblacion": 3720382, "superficie": 69700, "continente": "Asia"},
-    {"nombre": "Ghana", "poblacion": 34121985, "superficie": 238533, "continente": "África"},
-    {"nombre": "Granada", "poblacion": 126183, "superficie": 344, "continente": "América"},
-    {"nombre": "Grecia", "poblacion": 10475681, "superficie": 131957, "continente": "Europa"},
-    {"nombre": "Guatemala", "poblacion": 18383363, "superficie": 108889, "continente": "América"},
-    {"nombre": "Guinea", "poblacion": 14029915, "superficie": 245857, "continente": "África"},
-    {"nombre": "Guinea Ecuatorial", "poblacion": 1835958, "superficie": 28051, "continente": "África"},
-    {"nombre": "Guinea-Bisáu", "poblacion": 2155375, "superficie": 36125, "continente": "África"},
-    {"nombre": "Guyana", "poblacion": 813834, "superficie": 214969, "continente": "América"},
-    {"nombre": "Haití", "poblacion": 11577799, "superficie": 27750, "continente": "América"},
-    {"nombre": "Honduras", "poblacion": 11222965, "superficie": 112492, "continente": "América"},
-    {"nombre": "Hungría", "poblacion": 9606257, "superficie": 93028, "continente": "Europa"},
-    {"nombre": "India", "poblacion": 1428627663, "superficie": 3287263, "continente": "Asia"},
-    {"nombre": "Indonesia", "poblacion": 277534122, "superficie": 1904569, "continente": "Asia"},
-    {"nombre": "Irak", "poblacion": 45504560, "superficie": 438317, "continente": "Asia"},
-    {"nombre": "Irán", "poblacion": 89172743, "superficie": 1648195, "continente": "Asia"},
-    {"nombre": "Irlanda", "poblacion": 5062114, "superficie": 70273, "continente": "Europa"},
-    {"nombre": "Islandia", "poblacion": 375318, "superficie": 103000, "continente": "Europa"},
-    {"nombre": "Islas Marshall", "poblacion": 41576, "superficie": 181, "continente": "Oceanía"},
-    {"nombre": "Islas Salomón", "poblacion": 740424, "superficie": 28896, "continente": "Oceanía"},
-    {"nombre": "Israel", "poblacion": 9646000, "superficie": 22072, "continente": "Asia"},
-    {"nombre": "Italia", "poblacion": 58853482, "superficie": 301340, "continente": "Europa"},
-    {"nombre": "Jamaica", "poblacion": 2825544, "superficie": 10991, "continente": "América"},
-    {"nombre": "Japón", "poblacion": 123294513, "superficie": 377930, "continente": "Asia"},
-    {"nombre": "Jordania", "poblacion": 11335722, "superficie": 89342, "continente": "Asia"},
-    {"nombre": "Kazajistán", "poblacion": 19973913, "superficie": 2724900, "continente": "Asia"},
-    {"nombre": "Kenia", "poblacion": 55100597, "superficie": 580367, "continente": "África"},
-    {"nombre": "Kirguistán", "poblacion": 7005701, "superficie": 199951, "continente": "Asia"},
-    {"nombre": "Kiribati", "poblacion": 131232, "superficie": 811, "continente": "Oceanía"},
-    {"nombre": "Kuwait", "poblacion": 4383646, "superficie": 17818, "continente": "Asia"},
-    {"nombre": "Laos", "poblacion": 7649426, "superficie": 236800, "continente": "Asia"},
-    {"nombre": "Lesoto", "poblacion": 2330319, "superficie": 30355, "continente": "África"},
-    {"nombre": "Letonia", "poblacion": 1851393, "superficie": 64559, "continente": "Europa"},
-    {"nombre": "Líbano", "poblacion": 5489726, "superficie": 10452, "continente": "Asia"},
-    {"nombre": "Liberia", "poblacion": 5345999, "superficie": 111369, "continente": "África"},
-    {"nombre": "Libia", "poblacion": 6736992, "superficie": 1759540, "continente": "África"},
-    {"nombre": "Liechtenstein", "poblacion": 39878, "superficie": 160, "continente": "Europa"},
-    {"nombre": "Lituania", "poblacion": 2795680, "superficie": 65300, "continente": "Europa"},
-    {"nombre": "Luxemburgo", "poblacion": 654768, "superficie": 2586, "continente": "Europa"},
-    {"nombre": "Macedonia del Norte", "poblacion": 2083459, "superficie": 25713, "continente": "Europa"},
-    {"nombre": "Madagascar", "poblacion": 30325764, "superficie": 587041, "continente": "África"},
-    {"nombre": "Malasia", "poblacion": 34308525, "superficie": 330803, "continente": "Asia"},
-    {"nombre": "Malaui", "poblacion": 20931752, "superficie": 118484, "continente": "África"},
-    {"nombre": "Maldivas", "poblacion": 521021, "superficie": 298, "continente": "Asia"},
-    {"nombre": "Malí", "poblacion": 23366735, "superficie": 1240192, "continente": "África"},
-    {"nombre": "Malta", "poblacion": 535064, "superficie": 316, "continente": "Europa"},
-    {"nombre": "Marruecos", "poblacion": 37457999, "superficie": 446550, "continente": "África"},
-    {"nombre": "Mauricio", "poblacion": 1271768, "superficie": 2040, "continente": "África"},
-    {"nombre": "Mauritania", "poblacion": 4925846, "superficie": 1030700, "continente": "África"},
-    {"nombre": "México", "poblacion": 128455567, "superficie": 1964375, "continente": "América"},
-    {"nombre": "Micronesia", "poblacion": 115224, "superficie": 702, "continente": "Oceanía"},
-    {"nombre": "Moldavia", "poblacion": 3250680, "superficie": 33846, "continente": "Europa"},
-    {"nombre": "Mónaco", "poblacion": 36408, "superficie": 2, "continente": "Europa"},
-    {"nombre": "Mongolia", "poblacion": 3389231, "superficie": 1564116, "continente": "Asia"},
-    {"nombre": "Montenegro", "poblacion": 619211, "superficie": 13812, "continente": "Europa"},
-    {"nombre": "Mozambique", "poblacion": 33897354, "superficie": 801590, "continente": "África"},
-    {"nombre": "Namibia", "poblacion": 2562343, "superficie": 825615, "continente": "África"},
-    {"nombre": "Nauru", "poblacion": 12704, "superficie": 21, "continente": "Oceanía"},
-    {"nombre": "Nepal", "poblacion": 30547597, "superficie": 147516, "continente": "Asia"},
-    {"nombre": "Nicaragua", "poblacion": 7046311, "superficie": 130373, "continente": "América"},
-    {"nombre": "Níger", "poblacion": 27228289, "superficie": 1267000, "continente": "África"},
-    {"nombre": "Nigeria", "poblacion": 223804632, "superficie": 923768, "continente": "África"},
-    {"nombre": "Noruega", "poblacion": 5465630, "superficie": 385207, "continente": "Europa"},
-    {"nombre": "Nueva Zelanda", "poblacion": 5264025, "superficie": 268838, "continente": "Oceanía"},
-    {"nombre": "Omán", "poblacion": 4737962, "superficie": 309500, "continente": "Asia"},
-    {"nombre": "Países Bajos", "poblacion": 17475447, "superficie": 41543, "continente": "Europa"},
-    {"nombre": "Pakistán", "poblacion": 240485658, "superficie": 881912, "continente": "Asia"},
-    {"nombre": "Palaos", "poblacion": 18024, "superficie": 459, "continente": "Oceanía"},
-    {"nombre": "Palestina", "poblacion": 5220000, "superficie": 6020, "continente": "Asia"},
-    {"nombre": "Panamá", "poblacion": 4440977, "superficie": 75417, "continente": "América"},
-    {"nombre": "Papúa Nueva Guinea", "poblacion": 10595777, "superficie": 462840, "continente": "Oceanía"},
-    {"nombre": "Paraguay", "poblacion": 6896906, "superficie": 406752, "continente": "América"},
-    {"nombre": "Perú", "poblacion": 34049589, "superficie": 1285216, "continente": "América"},
-    {"nombre": "Polonia", "poblacion": 41026067, "superficie": 312679, "continente": "Europa"},
-    {"nombre": "Portugal", "poblacion": 10247606, "superficie": 92212, "continente": "Europa"},
-    {"nombre": "Puerto Rico", "poblacion": 3250149, "superficie": 9104, "continente": "América"},
-    {"nombre": "Qatar", "poblacion": 2930525, "superficie": 11586, "continente": "Asia"},
-    {"nombre": "Reino Unido", "poblacion": 67508959, "superficie": 243610, "continente": "Europa"},
-    {"nombre": "República Centroafricana", "poblacion": 5633410, "superficie": 622984, "continente": "África"},
-    {"nombre": "República Checa", "poblacion": 10736770, "superficie": 78865, "continente": "Europa"},
-    {"nombre": "República Democrática del Congo", "poblacion": 102262808, "superficie": 2344858, "continente": "África"},
-    {"nombre": "República Dominicana", "poblacion": 11310828, "superficie": 48671, "continente": "América"},
-    {"nombre": "Ruanda", "poblacion": 14094625, "superficie": 26338, "continente": "África"},
-    {"nombre": "Rumania", "poblacion": 19127340, "superficie": 238397, "continente": "Europa"},
-    {"nombre": "Rusia", "poblacion": 144444359, "superficie": 17098242, "continente": "Europa/Asia"},
-    {"nombre": "Samoa", "poblacion": 225681, "superficie": 2842, "continente": "Oceanía"},
-    {"nombre": "San Cristóbal y Nieves", "poblacion": 47334, "superficie": 261, "continente": "América"},
-    {"nombre": "San Marino", "poblacion": 33944, "superficie": 61, "continente": "Europa"},
-    {"nombre": "San Vicente y las Granadinas", "poblacion": 104332, "superficie": 389, "continente": "América"},
-    {"nombre": "Santa Lucía", "poblacion": 179651, "superficie": 616, "continente": "América"},
-    {"nombre": "Santo Tomé y Príncipe", "poblacion": 228435, "superficie": 964, "continente": "África"},
-    {"nombre": "Senegal", "poblacion": 17849263, "superficie": 196722, "continente": "África"},
-    {"nombre": "Serbia", "poblacion": 7211973, "superficie": 88361, "continente": "Europa"},
-    {"nombre": "Seychelles", "poblacion": 107660, "superficie": 455, "continente": "África"},
-    {"nombre": "Sierra Leona", "poblacion": 8720752, "superficie": 71740, "continente": "África"},
-    {"nombre": "Singapur", "poblacion": 6014726, "superficie": 728, "continente": "Asia"},
-    {"nombre": "Siria", "poblacion": 23227000, "superficie": 185180, "continente": "Asia"},
-    {"nombre": "Somalia", "poblacion": 18679067, "superficie": 637657, "continente": "África"},
-    {"nombre": "Sri Lanka", "poblacion": 21893539, "superficie": 65610, "continente": "Asia"},
-    {"nombre": "Sudáfrica", "poblacion": 60142978, "superficie": 1221037, "continente": "África"},
-    {"nombre": "Sudán", "poblacion": 48228487, "superficie": 1861484, "continente": "África"},
-    {"nombre": "Sudán del Sur", "poblacion": 11193725, "superficie": 619745, "continente": "África"},
-    {"nombre": "Suecia", "poblacion": 10601681, "superficie": 450295, "continente": "Europa"},
-    {"nombre": "Suiza", "poblacion": 8796669, "superficie": 41284, "continente": "Europa"},
-    {"nombre": "Surinam", "poblacion": 623236, "superficie": 163820, "continente": "América"},
-    {"nombre": "Tailandia", "poblacion": 71697030, "superficie": 513120, "continente": "Asia"},
-    {"nombre": "Tanzania", "poblacion": 67391582, "superficie": 945087, "continente": "África"},
-    {"nombre": "Tayikistán", "poblacion": 10139180, "superficie": 143100, "continente": "Asia"},
-    {"nombre": "Timor Oriental", "poblacion": 1396291, "superficie": 14874, "continente": "Asia"},
-    {"nombre": "Togo", "poblacion": 9245279, "superficie": 56785, "continente": "África"},
-    {"nombre": "Tonga", "poblacion": 107773, "superficie": 747, "continente": "Oceanía"},
-    {"nombre": "Trinidad y Tobago", "poblacion": 1534937, "superficie": 5130, "continente": "América"},
-    {"nombre": "Túnez", "poblacion": 12454525, "superficie": 163610, "continente": "África"},
-    {"nombre": "Turkmenistán", "poblacion": 6543267, "superficie": 488100, "continente": "Asia"},
-    {"nombre": "Turquía", "poblacion": 85342741, "superficie": 783562, "continente": "Europa/Asia"},
-    {"nombre": "Tuvalu", "poblacion": 11204, "superficie": 26, "continente": "Oceanía"},
-    {"nombre": "Ucrania", "poblacion": 36615000, "superficie": 603500, "continente": "Europa"},
-    {"nombre": "Uganda", "poblacion": 48127339, "superficie": 241038, "continente": "África"},
-    {"nombre": "Uruguay", "poblacion": 3423106, "superficie": 176215, "continente": "América"},
-    {"nombre": "Uzbekistán", "poblacion": 35294110, "superficie": 447400, "continente": "Asia"},
-    {"nombre": "Vanuatu", "poblacion": 334506, "superficie": 12189, "continente": "Oceanía"},
-    {"nombre": "Vaticano", "poblacion": 764, "superficie": 0.44, "continente": "Europa"},
-    {"nombre": "Venezuela", "poblacion": 33695862, "superficie": 916445, "continente": "América"},
-    {"nombre": "Vietnam", "poblacion": 98858934, "superficie": 331212, "continente": "Asia"},
-    {"nombre": "Yemen", "poblacion": 34449825, "superficie": 527968, "continente": "Asia"},
-    {"nombre": "Yibuti", "poblacion": 1126535, "superficie": 23200, "continente": "África"},
-    {"nombre": "Zambia", "poblacion": 20613723, "superficie": 752612, "continente": "África"},
-    {"nombre": "Zimbabue", "poblacion": 16320537, "superficie": 390757, "continente": "África"}
-]
 paises_info_minusculas=[]
 
 for i in range(0,len(paises_info)):
     paises_info_minusculas.append(paises_info[i]["nombre"].lower())
 
 while menu:
-    print("---MENU---")
+    print("\n---MENU---")
     print("1) Buscar un país por nombre")
     print("2) Filtrar países")
     print("3) Ordenar países")
     print("4) Mostrar estadísticas de países")
-    print("5) Ingrese 0 (cero) para salir")
-    opcion = int(input("\nIngresar la opcion deseada: "))
+    print("0) Ingrese 0 (cero) para salir")
+    # opcion = int(input("\nIngresar la opcion deseada: "))
+    opcion = int(input("| "))
     if opcion <= 5 or opcion > 0:
         match opcion:
             case 1:
                 seleccion = input("Ingrese un país: ").lower()
                 print(funcion_buscar_pais(paises_info_minusculas, seleccion))
             case 2:
-                pass
+                seleccion = int(input("\nFiltrar países por:\n1) Continente\n2) Rango de población\n3) Rango de superficie    |"))
+                funcion_filtrar_paises(seleccion)
+                
             case 3:
-                pass
+                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie")
+                seleccion = int(input("Ingrese una opción: "))
+                if 1<= seleccion <=3:
+                    print("BIEN")
+                else:
+                    print("MAL")
+                    continue
             case 4:
-                pass
+                print("Mostrar estadísticas:\n1) País con mayor y menor población\n2) Promedio de población\n3) Promedio de superficie\n4) Cantidad de países por continente")
+                seleccion = int(input("Ingrese una opción: "))
+                if 1<= seleccion <=4:
+                    print("BIEN")
+                else:
+                    print("MAL")
+                    continue
             case 0:
                 print("Saliendo...")
                 break
