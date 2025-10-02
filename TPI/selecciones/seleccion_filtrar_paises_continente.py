@@ -1,6 +1,6 @@
 from paises_info import *
 
-def seleccion_filtrar_paises(seleccion):
+def seleccion_filtrar_paises_continente(seleccion):
     if 1<= seleccion <=5:
         print("")
         match seleccion:
