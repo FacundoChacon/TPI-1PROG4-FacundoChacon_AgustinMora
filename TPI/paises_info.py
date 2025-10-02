@@ -1,5 +1,3 @@
-from funciones.funcion_buscar_pais import *
-menu=True
 paises_info = [
     {"nombre": "Afganistán", "poblacion": 41128771, "superficie": 652230, "continente": "Asia"},
     {"nombre": "Albania", "poblacion": 2877797, "superficie": 28748, "continente": "Europa"},
@@ -198,33 +196,3 @@ paises_info = [
     {"nombre": "Zambia", "poblacion": 20613723, "superficie": 752612, "continente": "África"},
     {"nombre": "Zimbabue", "poblacion": 16320537, "superficie": 390757, "continente": "África"}
 ]
-paises_info_minusculas=[]
-
-for i in range(0,len(paises_info)):
-    paises_info_minusculas.append(paises_info[i]["nombre"].lower())
-
-while menu:
-    print("---MENU---")
-    print("1) Buscar un país por nombre")
-    print("2) Filtrar países")
-    print("3) Ordenar países")
-    print("4) Mostrar estadísticas de países")
-    print("5) Ingrese 0 (cero) para salir")
-    opcion = int(input("\nIngresar la opcion deseada: "))
-    if opcion <= 5 or opcion > 0:
-        match opcion:
-            case 1:
-                seleccion = input("Ingrese un país: ").lower()
-                print(funcion_buscar_pais(paises_info_minusculas, seleccion))
-            case 2:
-                pass
-            case 3:
-                pass
-            case 4:
-                pass
-            case 0:
-                print("Saliendo...")
-                break
-    else:
-        print("\nOpción incorrecta. Ingrese un número del 1 al 5\n")
-        continue
