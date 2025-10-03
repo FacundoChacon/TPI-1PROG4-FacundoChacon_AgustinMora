@@ -1,6 +1,7 @@
 from paises_info import * #Se importa la lista completa de los países, más su información (continente, habitantes,etc)
 from funciones.funcion_buscar_pais import * #Se importa de la carpeta "funciones" la funcion para la opción 1)
-from funciones.funcion_filtrar_paises import *
+from funciones.funcion_filtrar_paises import * #Se importa de la carpeta "funciones" la funcion para la opción 2)
+from funciones.funcion_ordenar_paises import * #Se importa de la carpeta "funciones" la funcion para la opción 3)
 
 paises_info_minusculas=[]
 for i in range(0,len(paises_info)):
@@ -27,11 +28,7 @@ while menu:
             case 3: #Ordenar países
                 print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie")
                 seleccion = int(input("Ingrese una opción: "))
-                if 1<= seleccion <=3:
-                    print("BIEN")
-                else:
-                    print("MAL")
-                    continue
+                ordenar_paises(seleccion)
             case 4: #Mostrar estadísticas de países
                 print("Mostrar estadísticas:\n1) País con mayor y menor población\n2) Promedio de población\n3) Promedio de superficie\n4) Cantidad de países por continente")
                 seleccion = int(input("Ingrese una opción: "))
