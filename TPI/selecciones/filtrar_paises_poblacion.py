@@ -1,7 +1,7 @@
 from paises_info import *
 from funciones.funcion_punto_cada_tres_cifras import *
 
-def seleccion_filtrar_paises_poblacion(seleccion):
+def filtrar_paises_poblacion(seleccion):
 #1) Menos de 1 Millón
 #2) Entre 1-10 Millones
 #3) Más de 10 Millones

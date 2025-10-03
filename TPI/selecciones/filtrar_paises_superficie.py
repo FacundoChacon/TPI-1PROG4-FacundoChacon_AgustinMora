@@ -1,6 +1,6 @@
 from paises_info import *
 from funciones.funcion_punto_cada_tres_cifras import *
-def funcion_filtrar_paises_superficie(seleccion):
+def filtrar_paises_superficie(seleccion):
 #1)      <500
 #2) 500< x <1.000
 #3) 1.000< x <10.000
