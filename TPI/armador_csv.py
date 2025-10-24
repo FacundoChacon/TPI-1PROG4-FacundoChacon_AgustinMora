@@ -12,7 +12,6 @@ def armador_csv():
         escritor = csv.DictWriter(archivo, fieldnames=campos)
         escritor.writeheader()
         escritor.writerows(paises_copia)
-    import csv
     
     paises_copia = [pais.copy() for pais in paises_info]  # copia superficial de diccionarios
 
