@@ -2,6 +2,8 @@ from paises_info import *
 def funcion_buscar_pais(lista_paises, pais_a_buscar):
     contador = 0
     pais = pais_a_buscar.lower()
+    if not pais_a_buscar.isalpha():
+        return "\nIngresó un caracter no valido."
     if pais in lista_paises:
         indice = lista_paises.index(pais)
         if lista_paises[indice]:

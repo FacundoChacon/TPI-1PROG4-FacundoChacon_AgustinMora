@@ -13,5 +13,5 @@ def max_min_poblacion():
             else:
                 poblacion[i], poblacion[j] = poblacion[j], poblacion[i]
                 nombre_paises[i], nombre_paises[j] = nombre_paises[j], nombre_paises[i]
-    print(f"El pais con mas poblacion es '{nombre_paises[0]}' y tiene {poblacion[0]}")
-    print(f"El pais con mas poblacion es '{nombre_paises[len(nombre_paises)-1]}' y tiene {poblacion[len(poblacion)-1]}")
+    print(f"\nEl pais con más poblacion es '{nombre_paises[0]}' y tiene {poblacion[0]}")
+    print(f"El pais con menor poblacion es '{nombre_paises[len(nombre_paises)-1]}' y tiene {poblacion[len(poblacion)-1]}")
