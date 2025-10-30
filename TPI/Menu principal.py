@@ -29,7 +29,7 @@ while menu:
                 funcion_filtrar_paises(seleccion)
                 
             case 3: #Ordenar países
-                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie")
+                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
                 seleccion = int(input("Ingrese una opción: "))
                 ordenar_paises(seleccion)
             case 4: #Mostrar estadísticas de países
