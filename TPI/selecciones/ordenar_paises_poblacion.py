@@ -15,3 +15,5 @@ def ordenar_paises_poblacion(): #Ordena los países por población de mayor a me
                 nombre_paises[i], nombre_paises[j] = nombre_paises[j], nombre_paises[i]
     for i in range(0,len(habitantes_paises)):
         print(f"El país {nombre_paises[i]} tiene {habitantes_paises[i]} habitantes")
+        
+        

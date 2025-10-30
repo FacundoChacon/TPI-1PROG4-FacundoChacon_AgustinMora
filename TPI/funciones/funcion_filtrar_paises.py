@@ -13,11 +13,17 @@ def funcion_filtrar_paises(seleccion):
             seleccion = int(input("\nElige una opción:\n1) África\n2) América\n3) Asia\n4) Europa\n5) Oceanía \n| "))
             filtrar_paises_continente(seleccion)
         case 2:
-            seleccion = int(input("Eliga una opción:\n1) Menos de 1 Millón\n2) Entre 1-10 Millones\n3) Más de 10 Millones \n| "))
+            seleccion = int(input("\nElige una opción:\n1) Menos de 1 Millón\n2) Entre 1-10 Millones\n3) Más de 10 Millones \n| "))
             filtrar_paises_poblacion(seleccion)
         case 3:
-            seleccion = int(input("\nEliga una opción:\n1) Menos de 500km \n2) Entre 500-1.000km\n3) Entre 1.000-10.000km\n4) Entre 10.000-50.000km\n5) Entre 50.000-100.000km\n6) Entre 100.000-200.000km\n7) Entre 200.000-500.000km\n8) Entre 500.000-1.000.000km\n9) Entre 1.000.000-3.000.000km\n10) Más de 3.000.000km \n| "))
+            seleccion = int(input("\nElige una opción:\n \
+1) Menos de 1.000km \n \
+2) Entre 1.000-50.000km\n \
+3) Entre 50.000-500.000km\n \
+4) Entre 500.000-1.000.000km\n \
+5) Más de 1.000.000km \n| "))
             filtrar_paises_superficie(seleccion)
         case _:
             print("Opción inválida, vuelva a intentarlo.")
             return
+        

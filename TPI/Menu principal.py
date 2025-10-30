@@ -29,12 +29,12 @@ while menu:
                 funcion_filtrar_paises(seleccion)
                 
             case 3: #Ordenar países
-                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
-                seleccion = int(input("Ingrese una opción: "))
+                print("\nOrdenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
+                seleccion = int(input("| "))
                 ordenar_paises(seleccion)
             case 4: #Mostrar estadísticas de países
                 print("Mostrar estadísticas:\n1) País con mayor y menor población\n2) Promedio de población\n3) Promedio de superficie\n4) Cantidad de países por continente")
-                seleccion = int(input("Ingrese una opción: "))
+                seleccion = int(input("| "))
                 estadisticas(seleccion,paises_info_minusculas)
             case _: #Cualquier otra opción ingresada por el usuario
                 print("Saliendo del programa...")
@@ -43,3 +43,4 @@ while menu:
                 #Se cambia el valor de la variable "menu" a False para que el bucle termine y el programa finalice
                 #Se utiliza "break" para salir del bucle inmediatamente
     except ValueError: print("\nSolo se permiten números enteros!","\nVolviendo al menú principal...") 
+    

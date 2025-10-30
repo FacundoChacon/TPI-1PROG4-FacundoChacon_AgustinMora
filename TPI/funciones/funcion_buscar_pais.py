@@ -11,7 +11,7 @@ def funcion_buscar_pais(lista_paises, pais_a_buscar):
     contador = 0
     pais = pais_a_buscar.lower()
     if pais == "":
-        return "\nIngresó un caracter no valido."
+        return "Ingresó un caracter no valido."
     if sin_tildes(pais) in paises_sin_tildes:
         indice = paises_sin_tildes.index(sin_tildes(pais))
         if lista_paises[indice]:
@@ -23,3 +23,4 @@ def funcion_buscar_pais(lista_paises, pais_a_buscar):
             contador+=1
             if contador>=(len(paises_info)):
                 return f'No se encontró "{pais_a_buscar}", por favor revise que haya introducido bien el texto.'
+            

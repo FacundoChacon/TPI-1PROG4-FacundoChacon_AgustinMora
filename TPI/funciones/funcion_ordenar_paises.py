@@ -14,4 +14,4 @@ def ordenar_paises(seleccion): #Función que ordena los países según la selecc
         case 4:
             ingresar_editar_pais()
         case _:
-            print("Opción no válida. Por favor, elija 1, 2 o 3.")
+            print("Opción no válida. Por favor, elija 1, 2, 3 o 4.")

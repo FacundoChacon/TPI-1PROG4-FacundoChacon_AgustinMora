@@ -27,5 +27,6 @@ def ingresar_editar_pais():
                 "superficie": superficie,
                 "continente": continente
             }
-            paises_info.append(nuevo_pais)
-            print(f"País '{nombre_pais}' agregado exitosamente.")
+            # print(f"País '{nombre_pais}' agregado exitosamente.")
+            # with open("paises_info.py", "a") as archivo:
+            #     archivo.writelines(nuevo_pais)

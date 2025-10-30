@@ -24,5 +24,5 @@ def filtrar_paises_continente(seleccion):
                 for i in range(0,len(paises_info)):
                     if paises_info[i].get("continente") == "Oceanía":
                         print (paises_info[i].get("nombre"))
-    else:
-        print("MALLLLALALAMLALMALM")
+            case _:
+                print("Opción invalida.")
