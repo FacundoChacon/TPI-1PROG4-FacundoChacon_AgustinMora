@@ -35,7 +35,7 @@ while menu:
             case 4: #Mostrar estadísticas de países
                 print("Mostrar estadísticas:\n1) País con mayor y menor población\n2) Promedio de población\n3) Promedio de superficie\n4) Cantidad de países por continente")
                 seleccion = int(input("Ingrese una opción: "))
-                estadisticas(seleccion)
+                estadisticas(seleccion,paises_info_minusculas)
             case _: #Cualquier otra opción ingresada por el usuario
                 print("Saliendo del programa...")
                 menu = False
