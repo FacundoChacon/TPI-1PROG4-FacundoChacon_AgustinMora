@@ -1,42 +1,52 @@
-from paises_info import *
+import csv
 from funciones.funcion_punto_cada_tres_cifras import *
+
 def filtrar_paises_superficie(seleccion):
-#1) <1.000
-#2) 1.000< x 50.000
-#3) 50.000< x 500.000
-#4) 500.000< x <1.000.000
-#5) 1.000.000 < x
+    # Leer el archivo CSV y almacenar los países en una lista
+    paises = []
+    with open('paises.csv', 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        paises = list(reader)  # Convertir el lector a una lista
+    # Filtrar países según la superficie y la opción seleccionada
     match seleccion:
         case 1:
-            print("")
-            for i in range(0,len(paises_info)):
-                if paises_info[i].get("superficie") <1000: #si el pais tiene menos de 1.000km entra en el if
-                    print(f"{paises_info[i].get("nombre")}: tiene {paises_info[i].get("superficie")} km.")
+            print("")  # Espacio en blanco para mejor legibilidad
+            for pais in paises:
+                # Mostrar países con superficie menor a 1000 km²
+                if float(pais['superficie']) < 1000:
+                    print(f"{pais['nombre']}: tiene {pais['superficie']} km.")
         case 2:
             print("")
-            for i in range(0,len(paises_info)):
-                if 1000 <=  paises_info[i].get("superficie") <50000: #Si el país tiene entre 1.000 y 50.000km entra en el if
-                    funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie")) #Se le pasa la superficie a la función
-                    print(f"{paises_info[i].get("nombre")}: tiene {funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie"))} km")
+            for i, pais in enumerate(paises):
+                superficie = float(pais['superficie'])
+                # Mostrar países con superficie entre 1000 y 50000 km²
+                if 1000 <= superficie < 50000:
+                    superficie_formateada = funcion_punto_cada_tres_cifras(i, superficie)
+                    print(f"{pais['nombre']}: tiene {superficie_formateada} km")
         case 3:
             print("")
-            for i in range(0,len(paises_info)):
-                if 50000 <=  paises_info[i].get("superficie") <500000: #Si el país tiene entre 5.000 y 500.000km entra en el if
-                    funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie")) #Se le pasa la superficie a la función
-                    print(f"{paises_info[i].get("nombre")}: tiene {funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie"))} km")
+            for i, pais in enumerate(paises):
+                superficie = float(pais['superficie'])
+                # Mostrar países con superficie entre 50000 y 500000 km²
+                if 50000 <= superficie < 500000:
+                    superficie_formateada = funcion_punto_cada_tres_cifras(i, superficie)
+                    print(f"{pais['nombre']}: tiene {superficie_formateada} km")
         case 4:
             print("")
-            for i in range(0,len(paises_info)):
-                if 500000 <=  paises_info[i].get("superficie") <1000000:
-                    #Si el país tiene entre 500.000 y 1.000.000km entra en el if
-                    funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie")) #Se le pasa la superficie a la función
-                    print(f"{paises_info[i].get("nombre")}: tiene {funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie"))} km")
+            for i, pais in enumerate(paises):
+                superficie = float(pais['superficie'])
+                # Mostrar países con superficie entre 500000 y 1000000 km²
+                if 500000 <= superficie < 1000000:
+                    superficie_formateada = funcion_punto_cada_tres_cifras(i, superficie)
+                    print(f"{pais['nombre']}: tiene {superficie_formateada} km")
         case 5:
             print("")
-            for i in range(0,len(paises_info)):
-                if 1000000 <=  paises_info[i].get("superficie"): #Si el país es mayor que 1.000.000 entra en el if
-                    funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie")) #Se le pasa la superficie a la función
-                    print(f"{paises_info[i].get("nombre")}: tiene {funcion_punto_cada_tres_cifras(i,paises_info[i].get("superficie"))} km")
+            for i, pais in enumerate(paises):
+                superficie = float(pais['superficie'])
+                # Mostrar países con superficie mayor o igual a 1000000 km²
+                if 1000000 <= superficie:
+                    superficie_formateada = funcion_punto_cada_tres_cifras(i, superficie)
+                    print(f"{pais['nombre']}: tiene {superficie_formateada} km")
         case _:
+            # Mensaje de error para opción no válida
             print("Incorrecto, ingrese una opción valida.")
-            
