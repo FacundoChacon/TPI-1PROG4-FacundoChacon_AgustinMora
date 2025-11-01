@@ -9,19 +9,33 @@ def quitar_tildes(s):
     return s.translate(tabla)
 # Carga los datos del archivo CSV de países
 def cargar_datos_csv():
-    ruta_csv = os.path.join(os.path.dirname(__file__), '..', 'archivos', 'paises.csv')
+    ruta_csv = os.path.join(os.path.dirname(__file__), '..', '..', 'paises.csv')
+    ruta_csv = os.path.abspath(ruta_csv)  # para obtener la ruta absoluta
     datos = []
-    with open(ruta_csv, 'r', encoding='utf-8') as archivo:
+    with open(ruta_csv, 'r', encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
             datos.append(fila)
     return datos
+
 # Busca un país en la lista y devuelve su índice
 def buscar_pais_index(pais, lista_paises):
     objetivo = quitar_tildes(pais)
-    for i, nombre in enumerate(lista_paises):
-        if quitar_tildes(nombre) == objetivo:
-            return i
+    index = 0
+    try:
+        with open(lista_paises, "r", encoding="utf-8") as archivo:
+            reader = csv.reader(archivo)
+            # Skip header row if present
+            next(reader, None)
+            for fila in reader:
+                if not fila:
+                    continue
+                if quitar_tildes(fila[0]) == objetivo:
+                    return index
+                index += 1
+    except FileNotFoundError:
+        # Si no existe el archivo, devolvemos -1 para indicar "no encontrado"
+        return -1
     return -1
 # Calcula el promedio de población por km2 para un país
 def promedio(pais, lista_paises):
@@ -30,55 +44,39 @@ def promedio(pais, lista_paises):
         print("Ingrese un país válido")
         return
     datos_paises = cargar_datos_csv()
+    if idx < 0 or idx >= len(datos_paises):
+        print("Ingrese un país válido")
+        return
     info = datos_paises[idx]
-    poblacion = info.get("Population")
-    superficie = info.get("Area")
+    poblacion = info.get("poblacion")
+    superficie = info.get("superficie")
+
+    # Limpia cadenas numéricas (quita separadores de miles y espacios)
+    def clean_num(s):
+        if s is None:
+            return None
+        s = str(s).strip()
+        if s == "":
+            return None
+        s = s.replace(",", "").replace(" ", "")
+        return s
+
+    poblacion_s = clean_num(poblacion)
+    superficie_s = clean_num(superficie)
+
     try:
-        poblacion = int(poblacion)
-        superficie = float(superficie)
+        poblacion_val = float(poblacion_s) if poblacion_s is not None else None
+        superficie_val = float(superficie_s) if superficie_s is not None else None
+        if poblacion_val is None or superficie_val is None:
+            raise ValueError
     except (TypeError, ValueError):
         print(f"Datos incompletos o inválidos para '{pais}'.")
         return
-    if superficie == 0:
+
+    if superficie_val == 0:
         print(f"No se puede calcular el promedio para '{pais}' porque la superficie es 0.")
         return
-    promedio_val = int(poblacion // superficie)
+
+    promedio_val = int(poblacion_val // superficie_val)
     print(f"El promedio de poblacion de '{pais}' es de {promedio_val} habitantes km²")
-
-
-
-
-
-'''
-from funciones.funcion_buscar_pais import *
-import unicodedata
-
-def promedio(pais,lista_paises):
-    def sin_tildes(s):
-        s = (s or "").strip().lower()
-        normalizado = unicodedata.normalize('NFKD', s)
-        return ''.join(c for c in normalizado if not unicodedata.combining(c))
-    paises_sin_tildes = []
-    for i in range(0, len(lista_paises)):
-        paises_sin_tildes.append(sin_tildes(lista_paises[i]))
-    pais_encontrado = False
-    buscado = sin_tildes(pais)
-    for i in range(0,len((paises_sin_tildes))):
-        if buscado == (paises_sin_tildes[i]):
-            poblacion = paises_info[i].get("poblacion")
-            superficie = paises_info[i].get("superficie")
-            try:
-                poblacion = int(poblacion)
-                superficie = int(superficie)
-                if superficie == 0:
-                    print(f"No se puede calcular el promedio para '{pais}' porque la superficie es 0.")
-                else:
-                    promedio_val = poblacion // superficie
-                    print(f"El promedio de poblacion de '{pais}' es de {promedio_val} habitantes km²")
-            except (TypeError, ValueError):
-                print(f"Datos incompletos o inválidos para '{pais}'.")
-            pais_encontrado = True
-            break
-    if not pais_encontrado:
-        print("Ingrese un país válido")
-'''
+    

@@ -1,5 +1,6 @@
 from paises_info import *
 import csv, os, unicodedata, difflib
+
 def funcion_buscar_pais(lista_paises, pais_a_buscar):
     def normalize(s):
         if s is None:

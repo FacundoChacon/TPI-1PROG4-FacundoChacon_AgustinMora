@@ -48,3 +48,4 @@ def ordenar_paises_poblacion(csv_path='paises.csv'):
     paises.sort(key=lambda x: x[1], reverse=True)
     for nombre, pobl in paises:
         print(f"El país {nombre} tiene {pobl} habitantes")
+        

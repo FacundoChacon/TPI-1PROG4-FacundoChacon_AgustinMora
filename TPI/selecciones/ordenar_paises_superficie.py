@@ -1,5 +1,4 @@
 import csv
-
 def cargar_paises_info():
     paises_info = []
     with open('paises.csv', mode='r', encoding='utf-8') as file:
@@ -39,3 +38,4 @@ def ordenar_paises_superficie():
                 print(f"El país {nombre_paises[i]} tiene {superficie_paises[i]} Km² de superficie")
         case _:
             print("Incorrecto, ingrese una opción valida.")
+            

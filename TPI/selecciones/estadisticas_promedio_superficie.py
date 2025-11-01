@@ -17,8 +17,7 @@ def promedio_superficie():
             elif pais == "Rusia" or pais == "Turquía":
                 superficie += float(row.get("superficie", 0))
                 pais_count += 1
-    # Calcular promedio si hay países
-    if pais_count > 0:
+    if pais_count > 0:# Calcular promedio si hay países
         dividir = superficie / pais_count
     else:
         dividir = 0

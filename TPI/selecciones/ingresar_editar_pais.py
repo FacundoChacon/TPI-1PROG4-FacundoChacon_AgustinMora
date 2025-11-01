@@ -42,3 +42,4 @@ def ingresar_editar_pais():
         escritor = csv.DictWriter(archivo, fieldnames=campos)
         escritor.writeheader()
         escritor.writerows(paises_info)
+        

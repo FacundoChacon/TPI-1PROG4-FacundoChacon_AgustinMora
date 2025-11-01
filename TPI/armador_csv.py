@@ -23,3 +23,4 @@ def armador_csv():
         escritor = csv.DictWriter(archivo, fieldnames=campos)
         escritor.writeheader()
         escritor.writerows(paises_copia)
+        

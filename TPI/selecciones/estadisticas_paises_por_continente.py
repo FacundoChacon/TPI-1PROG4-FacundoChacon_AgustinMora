@@ -23,3 +23,4 @@ def paises_continente():
     print(f"Asia tiene {asia} paises")
     print(f"Europa tiene {europa} paises")
     print(f"Oceanía tiene {oceania} paises")
+    

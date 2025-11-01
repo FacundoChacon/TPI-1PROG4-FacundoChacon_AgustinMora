@@ -16,3 +16,4 @@ def estadisticas(seleccion,lista_paises):
             paises_continente()
         case _:
             print("Se esperaba una de las opciones indicadas, intentelo de nuevo")
+            

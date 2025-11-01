@@ -17,3 +17,4 @@ def funcion_punto_cada_tres_cifras(i,dato):
         return superficie_con_puntos[:-1]
     else:
         return superficie_con_puntos
+    
