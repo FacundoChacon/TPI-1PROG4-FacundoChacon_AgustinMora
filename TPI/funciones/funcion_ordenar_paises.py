@@ -1,5 +1,6 @@
 import csv
 from funciones.funcion_buscar_pais import *
+
 def ordenar_paises_nombre(paises): #1
     for fila in paises:
         print(f"{fila.get("nombre")}")
@@ -25,6 +26,7 @@ def ordenar_paises_superficie(paises): #3
                 for superficie1,nombre1 in lista1_ordenada:
                     print(f"El pais {nombre1} tiene: {superficie1}")
         case 2:
+            contador=0
             lista1=[]
             for fila in paises:
                 try:
@@ -36,7 +38,13 @@ def ordenar_paises_superficie(paises): #3
                 lista1_ordenada = sorted(lista1)
                 
                 for superficie1,nombre1 in lista1_ordenada:
-                    print(f"El pais {nombre1} tiene: {superficie1}")
+                    if contador<=1:
+                        # print(nombre1)
+                        print(f"El pais {nombre1} tiene: {superficie1}")
+                        pass
+                    if nombre1 == "Rusia":
+                        # print("\nLOL\nLOL\nLOL\nLOL\nLOL")
+                        contador+=1
 
 
 def ingresar_editar_pais(paises): #4
@@ -44,7 +52,12 @@ def ingresar_editar_pais(paises): #4
     nombres = []
     for i in range(len(paises)):
         nombres.append(normalize(paises[i].get("nombre")))
-    if entrada in nombres:
+    # print(nombres)
+    for i in range(0, len(paises)):
+        if normalize(entrada) in normalize(paises[i].get("nombre")):
+            entrada=normalize(paises[i].get("nombre"))
+    
+    if bool(funcion_buscar_pais(paises,entrada)):
         indice = nombres.index(entrada)
         nuevo_nombre = input("Ingrese el nuevo nombre del país: ")
         nueva_poblacion = input("Ingrese la nueva población del país: ")
@@ -63,7 +76,7 @@ def ingresar_editar_pais(paises): #4
                 # Asegura que la superficie se guarde como float con dos decimales
                 paises[indice]["superficie"] = float("{:.2f}".format(float(paises[indice]["superficie"])))
             escritor.writerows(paises)
-    elif entrada not in nombres:
+    elif not bool(funcion_buscar_pais(paises,entrada)):
         nuevo_nombre = input("Ingrese el nombre del nuevo país: ")
         nueva_poblacion = input("Ingrese la población del nuevo país: ")
         nueva_superficie = input("Ingrese la superficie del nuevo país: ")

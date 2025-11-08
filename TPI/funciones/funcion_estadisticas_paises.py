@@ -33,14 +33,40 @@ def promedio_superficie(paises):
     promedio = suma//(cantidad_paises-2)
     print(f"El promedio de la superficie de todo el mundo es de: {promedio}")
 
-#Calcula la cantidad de paises que detectados en el mundo
-def paises_por_continente(paises):
-    cantidad_paises = 0
-    for fila in paises:
-        cantidad_paises += 1
-    cantidad_paises = cantidad_paises-2
-    print(f"La cantidad de paises que hay en el mundo son: {cantidad_paises}")
 
+#Calcula la cantidad de paises por continente
+def paises_por_continente(paises,seleccion):
+    match seleccion:
+                    case 1: #Africa
+                        africa  = 0
+                        for i in range (len(paises)):
+                            if paises[i].get("continente") == "África":
+                                africa +=1
+                        print(f"El continente de África tiene: {africa} paises")
+                    case 2: #America
+                        america  = 0
+                        for i in range (len(paises)):
+                            if paises[i].get("continente") == "América":
+                                america +=1
+                        print(f"El continente de América tiene: {america} paises")
+                    case 3: #Asia
+                        asia  = 0
+                        for i in range (len(paises)):
+                            if paises[i].get("continente") == "Asia":
+                                asia +=1
+                        print(f"El continente de Asia tiene: {asia} paises")
+                    case 4: #Europa
+                        Europa  = 0
+                        for i in range (len(paises)):
+                            if paises[i].get("continente") == "Europa":
+                                Europa +=1
+                        print(f"El continente de Europa tiene: {Europa} paises")
+                    case 5: #Oceania
+                        oceania  = 0
+                        for i in range (len(paises)):
+                            if paises[i].get("continente") == "Oceanía":
+                                oceania +=1
+                        print(f"El continente de Oceanía tiene: {oceania} paises")
 
 #Opciones que hay para calcular las estadisticas de lo que desee el usuario
 def estadisticas(lista_paises):
@@ -58,6 +84,7 @@ def estadisticas(lista_paises):
         case 3:
             promedio_superficie(lista_paises)
         case 4:
-            paises_por_continente(lista_paises)
+            seleccion = int(input("\nElige una opción:\n1) África\n2) América\n3) Asia\n4) Europa\n5) Oceanía \n| "))
+            paises_por_continente(lista_paises,seleccion)
         case _:
             print("Se esperaba una de las opciones indicadas, intentelo de nuevo")
