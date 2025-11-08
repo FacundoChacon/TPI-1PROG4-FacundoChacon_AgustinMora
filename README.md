@@ -1,5 +1,5 @@
 # TPI-1PROG4-FacundoChacon_AgustinMora
-→
+
 - Descripcion general del programa y sus usos:
   Este programa crea y gestiona una base de datos de países usando un archivo CSV.
   Si no existe el archivo paises.csv, lo genera con datos de cada país (nombre, población, superficie y continente) y
@@ -18,5 +18,5 @@
   descuido o tipo de error.
   Si el usuario ingresa lo esperado, el programa va a devolver lo esperado, sino se le va a indicar al usuario volver intentarlo y continuando con el programa sin
   que se detenga
-→
-Trabajo Practico Integrador de Facundo Chacon y Agustin Mora. Comision: 1PROG4
+  
+# Trabajo Practico Integrador de Facundo Chacon y Agustin Mora. Comision: 1PROG4
