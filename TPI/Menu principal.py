@@ -47,23 +47,23 @@ while menu:
     print("3) Ordenar países")
     print("4) Mostrar estadísticas de países")
     print("• Ingrese cualquier otro numero para salir")
-    try:
-        opcion = int(input("| ")) #Se le pide al usuario que ingrese una opción del menú
-        match opcion: #Se evalúa la opción ingresada por el usuario
-            case 1:
-                seleccion = input("Ingrese un país: ").lower()
-                funcion_buscar_pais(paises, seleccion)
-            case 2:
-                seleccion = int(input("\nFiltrar países por:\n1) Continente\n2) Rango de población\n3) Rango de superficie \n| "))
-                funcion_filtrar_paises(paises, seleccion)
-            case 3:
-                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
-                seleccion = int(input("Ingrese una opción: "))
-                #ordenar_paises(paises, seleccion)
-            case 4:
-                estadisticas(paises)
-            case _: #Cualquier otra opción ingresada por el usuario
-                print("Saliendo del programa...")
-                menu = False
-                break
-    except ValueError: print("\nSolo se permiten números enteros!","\nVolviendo al menú principal...") 
+    #try:
+    opcion = int(input("| ")) #Se le pide al usuario que ingrese una opción del menú
+    match opcion: #Se evalúa la opción ingresada por el usuario
+        case 1:
+            seleccion = input("Ingrese un país: ").lower()
+            funcion_buscar_pais(paises, seleccion)
+        case 2:
+            seleccion = int(input("\nFiltrar países por:\n1) Continente\n2) Rango de población\n3) Rango de superficie \n| "))
+            funcion_filtrar_paises(paises, seleccion)
+        case 3:
+            print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
+            seleccion = int(input("Ingrese una opción: "))
+            ordenar_paises(paises, seleccion)
+        case 4:
+            estadisticas(paises)
+        case _: #Cualquier otra opción ingresada por el usuario
+            print("Saliendo del programa...")
+            menu = False
+            break
+    #except ValueError: print("\nSolo se permiten números enteros!","\nVolviendo al menú principal...") 
