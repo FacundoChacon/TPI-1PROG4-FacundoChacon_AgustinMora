@@ -31,8 +31,6 @@ def llenar_lista_local(paises):#Se llena una lista con diccionarios desde el arc
         lector = csv.DictReader(archivo)
         for fila in lector:
             paises.append(fila)
-    for i in range(0, len(paises)):
-        print(paises[i].get("nombre"))
 
 paises = []
 if not os.path.exists("paises.csv"):
@@ -40,7 +38,6 @@ if not os.path.exists("paises.csv"):
     llenar_lista_local(paises)
 else:
     llenar_lista_local(paises)
-
 
 menu=True
 while menu:
@@ -58,15 +55,13 @@ while menu:
                 funcion_buscar_pais(paises, seleccion)
             case 2:
                 seleccion = int(input("\nFiltrar países por:\n1) Continente\n2) Rango de población\n3) Rango de superficie \n| "))
-                #funcion_filtrar_paises(paises, seleccion)
+                funcion_filtrar_paises(paises, seleccion)
             case 3:
                 print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
                 seleccion = int(input("Ingrese una opción: "))
                 #ordenar_paises(paises, seleccion)
             case 4:
-                print("Mostrar estadísticas:\n1) País con mayor y menor población\n2) Promedio de población\n3) Promedio de superficie\n4) Cantidad de países por continente")
-                seleccion = int(input("Ingrese una opción: "))
-                #estadisticas(seleccion, paises)
+                estadisticas(paises)
             case _: #Cualquier otra opción ingresada por el usuario
                 print("Saliendo del programa...")
                 menu = False
