@@ -5,6 +5,7 @@ from funciones.funcion_buscar_pais import * #Se importa de la carpeta "funciones
 from funciones.funcion_filtrar_paises import * #Se importa de la carpeta "funciones" la funcion para la opción 2)
 from funciones.funcion_ordenar_paises import * #Se importa de la carpeta "funciones" la funcion para la opción 3)
 from funciones.funcion_estadisticas_paises import * #Se importa de la carpeta "funciones" la funcion para la opción 4)
+from funciones.funcion_ingresar_editar_pais import * #Se importa de la carpeta "funciones" la funcion para la opción 5)
 
 def armador_csv():#Se llama a la función que crea el archivo csv con la información de los países
         paises_copia = [pais.copy() for pais in paises_info]  # copia superficial de diccionarios
@@ -46,6 +47,7 @@ while menu:
     print("2) Filtrar países")
     print("3) Ordenar países")
     print("4) Mostrar estadísticas de países")
+    print("5) Ingresar o editar un país")
     print("• Ingrese cualquier otro numero para salir")
     try:
         opcion = int(input("| ")) #Se le pide al usuario que ingrese una opción del menú
@@ -57,11 +59,13 @@ while menu:
                 seleccion = int(input("\nFiltrar países por:\n1) Continente\n2) Rango de población\n3) Rango de superficie \n| "))
                 funcion_filtrar_paises(paises, seleccion)
             case 3:
-                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie\n4) Agregar o editar un pais")
+                print("Ordenar países por:\n1) Nombre\n2) Población\n3) Superficie")
                 seleccion = int(input("Ingrese una opción: "))
                 ordenar_paises(paises, seleccion)
             case 4:
                 estadisticas(paises)
+            case 5:
+                ingresar_editar_pais(paises)
             case _: #Cualquier otra opción ingresada por el usuario
                 print("Saliendo del programa...")
                 menu = False
