@@ -12,6 +12,8 @@ def ordenar_paises_superficie(paises): #3
     seleccion = int(input("\nElige una opción:\n1) Mayor a menor (Descendente)\n2) menor a Mayor (Ascendente)\n| "))
     match seleccion:
         case 1:
+            contador=0
+            rusia=0
             lista1=[]
             for fila in paises:
                 try:
@@ -22,8 +24,14 @@ def ordenar_paises_superficie(paises): #3
                 lista1.append((superficie1,nombre1))
                 lista1_ordenada = sorted(lista1, reverse=True)
                 
-                for superficie1,nombre1 in lista1_ordenada:
+            for superficie1,nombre1 in lista1_ordenada:
+                if contador!=1:
                     print(f"El pais {nombre1} tiene: {superficie1}")
+                    contador=1
+                if nombre1 != "Rusia":
+                    # print(nombre1)
+                    print(f"El pais {nombre1} tiene: {superficie1}")
+                    pass
         case 2:
             contador=0
             lista1=[]
@@ -36,14 +44,14 @@ def ordenar_paises_superficie(paises): #3
                 lista1.append((superficie1,nombre1))
                 lista1_ordenada = sorted(lista1)
                 
-                for superficie1,nombre1 in lista1_ordenada:
-                    if contador<=1:
-                        # print(nombre1)
-                        print(f"El pais {nombre1} tiene: {superficie1}")
-                        pass
-                    if nombre1 == "Rusia":
-                        # print("\nLOL\nLOL\nLOL\nLOL\nLOL")
-                        contador+=1
+            for superficie1,nombre1 in lista1_ordenada:
+                if contador<=1:
+                    # print(nombre1)
+                    print(f"El pais {nombre1} tiene: {superficie1}")
+                    pass
+                if nombre1 == "Rusia":
+                    # print("\nLOL\nLOL\nLOL\nLOL\nLOL")
+                    contador+=1
 
 
 

@@ -30,7 +30,8 @@ def ingresar_editar_pais(paises):
                 # Asegura que la superficie se guarde como float con dos decimales
                 paises[indice]["superficie"] = float("{:.2f}".format(float(paises[indice]["superficie"])))
             escritor.writerows(paises)
-    elif not bool(funcion_buscar_pais(paises,entrada)):
+        return
+    else:
         nuevo_nombre = entrada
         nueva_poblacion = input("Ingrese la población del nuevo país: ")
         nueva_superficie = input("Ingrese la superficie del nuevo país: ")

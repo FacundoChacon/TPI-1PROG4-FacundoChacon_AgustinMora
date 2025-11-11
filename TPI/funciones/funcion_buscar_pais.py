@@ -15,3 +15,4 @@ def funcion_buscar_pais(lista_paises, pais_a_buscar):
             print(f"El pais '{lista_paises[i].get("nombre").title()}' fue encontrado en la lista")
             return True
     print(f"No se encontro el pais '{pais_a_buscar}'")
+    return False
