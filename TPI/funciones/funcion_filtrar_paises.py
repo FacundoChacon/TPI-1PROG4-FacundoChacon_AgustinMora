@@ -37,49 +37,6 @@ def funcion_filtrar_poblacion(paises):
             print(f"{fila.get("nombre")} tiene: {fila.get("poblacion")} habitantes")
 
 
-'''def rango_superficie(paises):
-    contador=0
-    seleccion = int(input("\nElige una opción:\n1) Mayor a menor (Descendente)\n2) menor a Mayor (Ascendente)\n| "))
-    match seleccion:
-        case 1: #Mayor a menor
-            lista1=[]
-            for fila in paises:
-                try:
-                    superficie1 = float(fila.get("superficie", 0))
-                except (TypeError, ValueError):
-                    superficie1 = 0.0
-                nombre1 = fila.get("nombre","Desconocido")
-                lista1.append((superficie1,nombre1))
-                lista1_ordenada = sorted(lista1,reverse=True)
-                
-                for superficie1,nombre1 in lista1_ordenada:
-                    # print(nombre1)
-                    if nombre1 == "Rusia":
-                        # print("\nLOL\nLOL\nLOL\nLOL\nLOL")
-                        contador+1
-                    if contador<1:
-                        print(f"El pais {nombre1} tiene: {superficie1}")
-        case 2: #menor a Mayor
-            lista1=[]
-            for fila in paises:
-                try:
-                    superficie1 = float(fila.get("superficie", 0))
-                except (TypeError, ValueError):
-                    superficie1 = 0.0
-                nombre1 = fila.get("nombre","Desconocido")
-                lista1.append((superficie1,nombre1))
-                lista1_ordenada = sorted(lista1)
-                
-                for superficie1,nombre1 in lista1_ordenada:
-                    if contador<=1:
-                        # print(nombre1)
-                        print(f"El pais {nombre1} tiene: {superficie1}")
-                        pass
-                    if nombre1 == "Rusia":
-                        # print("\nLOL\nLOL\nLOL\nLOL\nLOL")
-                        contador+=1'''
-
-
 def rango_superficie(paises): #3) Función que filtra los países según el rango de superficie ingresado por el usuario
     min = int(input("Ingrese la cantidad mínima a filtrar: "))
     max = int(input("Ingrese la cantidad máxima a filtrar: "))

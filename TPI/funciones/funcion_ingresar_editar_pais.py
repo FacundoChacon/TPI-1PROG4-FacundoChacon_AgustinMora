@@ -1,7 +1,7 @@
 import csv
 from funciones.funcion_buscar_pais import *
 
-def ingresar_editar_pais(paises): #4
+def ingresar_editar_pais(paises): 
     entrada = input("Ingrese el nombre del pais a modificar o un nombre nuevo si quiere agregar: ")
     nombres = []
     for i in range(len(paises)):
@@ -31,7 +31,7 @@ def ingresar_editar_pais(paises): #4
                 paises[indice]["superficie"] = float("{:.2f}".format(float(paises[indice]["superficie"])))
             escritor.writerows(paises)
     elif not bool(funcion_buscar_pais(paises,entrada)):
-        nuevo_nombre = input("Ingrese el nombre del nuevo país: ")
+        nuevo_nombre = entrada
         nueva_poblacion = input("Ingrese la población del nuevo país: ")
         nueva_superficie = input("Ingrese la superficie del nuevo país: ")
         nuevo_continente = input("Ingrese el continente del nuevo país: ")
