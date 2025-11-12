@@ -18,5 +18,6 @@
   descuido o tipo de error.
   Si el usuario ingresa lo esperado, el programa va a devolver lo esperado, sino se le va a indicar al usuario volver intentarlo y continuando con el programa sin
   que se detenga
-  
+# Video Tutorial Explicativo
+https://youtu.be/1PmeAXsTqtU?si=NwQTRth-iKughb_8
 # Trabajo Practico Integrador de Facundo Chacon y Agustin Mora. Comision: 1PROG4
